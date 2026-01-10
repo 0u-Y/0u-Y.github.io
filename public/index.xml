@@ -1,29 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>My New Hugo Site</title>
+    <title>0u-Y&#39;s Log</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content on My New Hugo Site</description>
+    <description>Recent content on 0u-Y&#39;s Log</description>
     <generator>Hugo -- 0.154.3</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Jan 2026 22:14:42 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Example</title>
-      <link>http://localhost:1313/posts/example/</link>
-      <pubDate>Sat, 10 Jan 2026 22:14:42 +0900</pubDate>
-      <guid>http://localhost:1313/posts/example/</guid>
-      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;As Ethereum approaches the &lt;strong&gt;HEgota&lt;/strong&gt; upgrade, scaling data availability via &lt;strong&gt;PeerDAS&lt;/strong&gt; is becoming a critical priority. While the theoretical specifications are promising, the real-world networking overhead of cell-level retrieval remains under-explored. In this post, I analyze the latency costs associated with PeerDAS cell propagation in a multi-client devnet environment.&lt;/p&gt;
-&lt;h2 id=&#34;methodology&#34;&gt;Methodology&lt;/h2&gt;
-&lt;p&gt;To measure the baseline performance, I utilized:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Client:&lt;/strong&gt; Lighthouse (PeerDAS-enabled branch)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Environment:&lt;/strong&gt; Local devnet via Kurtosis&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Metrics:&lt;/strong&gt; Cell retrieval time vs. Blob count (6 to 48 blobs)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;key-findings&#34;&gt;Key Findings&lt;/h2&gt;
-&lt;p&gt;Initial benchmarks show that as the number of blobs increases to 48, the networking overhead for sampling individual cells does not scale linearly. This suggests a potential bottleneck in the current &lt;code&gt;libp2p&lt;/code&gt; gossipsub scoring when handling high-frequency cell messages.&lt;/p&gt;</description>
-    </item>
   </channel>
 </rss>
