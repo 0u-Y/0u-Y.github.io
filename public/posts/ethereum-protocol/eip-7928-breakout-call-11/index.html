@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>EIP-7928 Breakout Call #11 - January 28, 2026 | 0u-Y&#39;s Log</title>
+<meta name="keywords" content="EIP-7928, Block Access Lists, DevNet, Breakout Call, Security">
+<meta name="description" content="Summary of EIP-7928 Breakout Call #11: DevNet 2 readiness, benchmarking strategies, and malicious BAL attack vectors">
+<meta name="author" content="">
+<link rel="canonical" href="https://0u-Y.github.io/posts/ethereum-protocol/eip-7928-breakout-call-11/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.da3211e5ef867bf2b75fd5a6515cfed7195c011e8ab735694e203810a827097b.css" integrity="sha256-2jIR5e&#43;Ge/K3X9WmUVz&#43;1xlcAR6KtzVpTiA4EKgnCXs=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://0u-Y.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://0u-Y.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://0u-Y.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://0u-Y.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://0u-Y.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://0u-Y.github.io/posts/ethereum-protocol/eip-7928-breakout-call-11/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://0u-Y.github.io/posts/ethereum-protocol/eip-7928-breakout-call-11/">
+  <meta property="og:site_name" content="0u-Y&#39;s Log">
+  <meta property="og:title" content="EIP-7928 Breakout Call #11 - January 28, 2026">
+  <meta property="og:description" content="Summary of EIP-7928 Breakout Call #11: DevNet 2 readiness, benchmarking strategies, and malicious BAL attack vectors">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-29T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-29T00:00:00+00:00">
+    <meta property="article:tag" content="EIP-7928">
+    <meta property="article:tag" content="Block Access Lists">
+    <meta property="article:tag" content="DevNet">
+    <meta property="article:tag" content="Breakout Call">
+    <meta property="article:tag" content="Security">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EIP-7928 Breakout Call #11 - January 28, 2026">
+<meta name="twitter:description" content="Summary of EIP-7928 Breakout Call #11: DevNet 2 readiness, benchmarking strategies, and malicious BAL attack vectors">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://0u-Y.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "EIP-7928 Breakout Call #11 - January 28, 2026",
+      "item": "https://0u-Y.github.io/posts/ethereum-protocol/eip-7928-breakout-call-11/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "EIP-7928 Breakout Call #11 - January 28, 2026",
+  "name": "EIP-7928 Breakout Call #11 - January 28, 2026",
+  "description": "Summary of EIP-7928 Breakout Call #11: DevNet 2 readiness, benchmarking strategies, and malicious BAL attack vectors",
+  "keywords": [
+    "EIP-7928", "Block Access Lists", "DevNet", "Breakout Call", "Security"
+  ],
+  "articleBody": "Introduction The 11th EIP-7928 breakout call tackled critical questions about Block Access Lists (BAL): How do we measure their real-world impact? What happens when a malicious proposer exploits them? And most importantly — do we actually need state locations in the BAL?\nDevNet 2: Ready to Launch DevNet 2 launch is targeted for next Wednesday at the latest, possibly earlier. DevNet 1 was highly successful with most clients achieving consensus, minimal forks even with EVM fuzzer running, and sync working smoothly across implementations. The foundation laid in DevNet 1 gives the team confidence to move forward quickly.\nHowever, there was a slight delay due to EIP-7778. The receipt modifications proposed in that EIP were recently reverted back to keeping receipts as-is. Despite this change, EIP-7928 itself isn’t blocking progress, and the team remains on track for the planned launch timeline.\nClient Optimization Readiness Production-Ready:\nGeth \u0026 Besu: Flags ready for parallel execution, parallel batch I/O, and parallel state root computation These two clients alone are sufficient to begin meaningful performance testing In Progress:\nNethermind: Working on parallel transaction execution and state recomputation; batch read not yet started Reth/Erigon: No updates provided The key insight: We don’t need all clients ready to start gathering critical benchmark data.\nBenchmarking Strategy: Why Real State Matters The core question benchmarking must answer: Do we actually need state locations in the BAL?\nTest Environment Requirements Testing on empty or small pre-state networks is useless. State reads are too fast without realistic data—you won’t see any performance difference. The team is planning mainnet shadow fork as the primary testing ground. Only with mainnet-scale state can we measure real impact.\nBloatNet will be used for future scenario testing—a shadow fork of mainnet with artificially increased state size, letting us test what happens as mainnet continues to grow.\nDevNet 2 won’t be used for performance testing. It’s an empty network with ~150M gas limit, focused on consensus mechanisms, BAL payload structure, and new Engine API methods. It’s about proving correctness, not measuring performance.\nWhat We’re Measuring Three scenarios will be compared:\nParallel execution only (baseline) Parallel execution + Batch I/O (full optimization) Individual impact of each optimization The critical question: Does Batch I/O (which depends on state locations in BAL) provide enough benefit to justify including state locations?\nState locations increase BAL size and add complexity, but they enable batch I/O prefetching. We need hard numbers to make this decision.\nEngine API Methods: CL-EL Coordination The problem: BAL is part of the execution payload in beacon blocks. Just like transactions, execution layer clients cannot process blocks without the BAL.\nTwo Approaches Debated Option 1: Required Field (Current Approach)\nCL must store BAL or blind it (like transactions) Requires new Engine API methods: getPayloadBodiesByRange and getPayloadBodiesByHash must include BAL Some CLs depend on these methods for deduplication and reducing disk storage Option 2: Optional Field\nDuring gossip: CL passes BAL to EL During sync: CL passes payload without BAL; EL fetches from DevP2P Problem: EL can’t synchronously process and return payload status; must return ‘syncing’ state Makes execution flow significantly more complex Decision: Keep current approach (required field) with two new Engine API methods. This allows CL clients to prune BAL for storage efficiency but retrieve it from EL when needed for helping other nodes sync.\nThe Malicious BAL Attack: A Critical Security Issue This was the most important discussion of the call. Toni presented a detailed attack scenario with visual diagrams.\nUnderstanding Block Execution Without BAL (60M gas limit):\nI/O → Execution → I/O → Execution → State Root Calculation Sequential I/O operations slow everything down.\nWith BAL - Honest Proposer (300M gas limit):\nBatch I/O (parallel) → Minimal I/O → Execution (parallel) → State Root Calc (parallel) Most state pre-cached through batch I/O. Gas limit can increase significantly.\nThe Attack Vector The fundamental weakness: State locations in BAL aren’t mapped to transaction indices. From any single transaction’s perspective, you cannot determine if the BAL’s state locations are correct or garbage.\nAttack scenario:\nMalicious proposer creates BAL with (gas_limit - max_tx_size) / 2100 storage slots All declared storage slots are garbage—never accessed Block’s transactions only perform heavy computation Why this works:\nEach core executing transactions can validate state diffs correctly But storage keys aren’t mapped to transaction indices No single core can determine if the BAL is invalid Only after executing ALL transactions can you realize the BAL was garbage The damage:\nProposer sacrifices their block (it’s invalid) Forces validators to waste batch I/O + execution time Potentially triggers reorgs on next slot Limits how aggressively we can scale gas limits Three Proposed Solutions Option 1: Do Nothing (Smart Client-Level Detection)\nSet caps on BAL based on gas limits Track gas usage and accessed locations during execution Fail early if remaining gas can’t access all declared slots Uncertainty: Is worst-case still equivalent to having no state locations? Option 2: Remove State Locations Entirely\nEliminates attack vector completely Also eliminates batch I/O benefits Depends on benchmark results Option 3: Add First Access Index (Most Elegant)\nMap each state location to the transaction index where it’s first accessed.\nBenefits:\nEarly failure detection (can fail after first transaction batch, not all transactions) Correct-order prefetching No duplication of addresses and storage keys Costs:\nAverage +4% size increase (1-4 KiB compressed) Worst-case: 0.92 MB → 0.97 MB (still 0.43 MB smaller than worst-case calldata block) Added implementation complexity How it prevents the attack:\nWithout first_access_index:\n8 transactions, 4 cores Must execute all 8 before discovering BAL is invalid With first_access_index:\nExecute first 4 transactions (one per core) Each core checks: did this transaction access slots with matching first_access_index? Can fail immediately if transaction only does computation No need to execute remaining 4 transactions Additional Discussions Specification Status:\nFelipe and Rahul created comprehensive tests for access edge cases Clients passing tests, good alignment across implementations Geth’s simplification proposal rejected due to potential griefing vector (1-gas call attack) Performance Metrics:\nStefan proposed OpenTelemetry for standardized metrics across clients. Key metrics: prefetching time, parallel execution efficiency, batch I/O performance. Geth and Reth implementing support. Goal: Grafana visualization in Kurtosis for apples-to-apples comparisons.\nKey Takeaways DevNet 2 is ready — Focus on consensus testing, not performance measurement State locations decision is data-driven — Need benchmark results from mainnet shadow fork Malicious BALs are a real threat — Not theoretical; could trigger reorgs and limit scaling First access index is promising — Elegant solution with modest overhead (~4% size increase) Hard data required — No decision until comprehensive benchmarks complete References EIP-7928 Specification PR #11181 (First Access Index) Call Recording: https://www.youtube.com/watch?v=v4_5quvIJh0\u0026t=354s Closing Thoughts What struck me about this call was the maturity of the decision-making process. Nobody rushed to conclusions. Nobody dismissed security concerns as unlikely. Core developers acknowledged uncertainty, proposed multiple solutions with clear tradeoffs, and committed to letting data drive decisions.\n",
+  "wordCount" : "1135",
+  "inLanguage": "en",
+  "datePublished": "2026-01-29T00:00:00Z",
+  "dateModified": "2026-01-29T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://0u-Y.github.io/posts/ethereum-protocol/eip-7928-breakout-call-11/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "0u-Y's Log",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://0u-Y.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://0u-Y.github.io/" accesskey="h" title="Core Dump (Alt + H)">Core Dump</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://0u-Y.github.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://0u-Y.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://0u-Y.github.io/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      EIP-7928 Breakout Call #11 - January 28, 2026
+    </h1>
+    <div class="post-description">
+      Summary of EIP-7928 Breakout Call #11: DevNet 2 readiness, benchmarking strategies, and malicious BAL attack vectors
+    </div>
+    <div class="post-meta"><span title='2026-01-29 00:00:00 +0000 UTC'>January 29, 2026</span>&nbsp;·&nbsp;<span>6 min</span>
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#devnet-2-ready-to-launch" aria-label="DevNet 2: Ready to Launch">DevNet 2: Ready to Launch</a></li>
+                <li>
+                    <a href="#client-optimization-readiness" aria-label="Client Optimization Readiness">Client Optimization Readiness</a></li>
+                <li>
+                    <a href="#benchmarking-strategy-why-real-state-matters" aria-label="Benchmarking Strategy: Why Real State Matters">Benchmarking Strategy: Why Real State Matters</a><ul>
+                        
+                <li>
+                    <a href="#test-environment-requirements" aria-label="Test Environment Requirements">Test Environment Requirements</a></li>
+                <li>
+                    <a href="#what-were-measuring" aria-label="What We&rsquo;re Measuring">What We&rsquo;re Measuring</a></li></ul>
+                </li>
+                <li>
+                    <a href="#engine-api-methods-cl-el-coordination" aria-label="Engine API Methods: CL-EL Coordination">Engine API Methods: CL-EL Coordination</a><ul>
+                        
+                <li>
+                    <a href="#two-approaches-debated" aria-label="Two Approaches Debated">Two Approaches Debated</a></li></ul>
+                </li>
+                <li>
+                    <a href="#the-malicious-bal-attack-a-critical-security-issue" aria-label="The Malicious BAL Attack: A Critical Security Issue">The Malicious BAL Attack: A Critical Security Issue</a><ul>
+                        
+                <li>
+                    <a href="#understanding-block-execution" aria-label="Understanding Block Execution">Understanding Block Execution</a></li>
+                <li>
+                    <a href="#the-attack-vector" aria-label="The Attack Vector">The Attack Vector</a></li>
+                <li>
+                    <a href="#three-proposed-solutions" aria-label="Three Proposed Solutions">Three Proposed Solutions</a></li></ul>
+                </li>
+                <li>
+                    <a href="#additional-discussions" aria-label="Additional Discussions">Additional Discussions</a></li>
+                <li>
+                    <a href="#key-takeaways" aria-label="Key Takeaways">Key Takeaways</a></li>
+                <li>
+                    <a href="#references" aria-label="References">References</a></li>
+                <li>
+                    <a href="#closing-thoughts" aria-label="Closing Thoughts">Closing Thoughts</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
+<p>The 11th EIP-7928 breakout call tackled critical questions about Block Access Lists (BAL): How do we measure their real-world impact? What happens when a malicious proposer exploits them? And most importantly — do we actually need state locations in the BAL?</p>
+<hr>
+<h2 id="devnet-2-ready-to-launch">DevNet 2: Ready to Launch<a hidden class="anchor" aria-hidden="true" href="#devnet-2-ready-to-launch">#</a></h2>
+<p>DevNet 2 launch is targeted for next Wednesday at the latest, possibly earlier. DevNet 1 was highly successful with most clients achieving consensus, minimal forks even with EVM fuzzer running, and sync working smoothly across implementations. The foundation laid in DevNet 1 gives the team confidence to move forward quickly.</p>
+<p>However, there was a slight delay due to EIP-7778. The receipt modifications proposed in that EIP were recently reverted back to keeping receipts as-is. Despite this change, EIP-7928 itself isn&rsquo;t blocking progress, and the team remains on track for the planned launch timeline.</p>
+<hr>
+<h2 id="client-optimization-readiness">Client Optimization Readiness<a hidden class="anchor" aria-hidden="true" href="#client-optimization-readiness">#</a></h2>
+<p><strong>Production-Ready:</strong></p>
+<ul>
+<li><strong>Geth &amp; Besu</strong>: Flags ready for parallel execution, parallel batch I/O, and parallel state root computation</li>
+<li>These two clients alone are sufficient to begin meaningful performance testing</li>
+</ul>
+<p><strong>In Progress:</strong></p>
+<ul>
+<li><strong>Nethermind</strong>: Working on parallel transaction execution and state recomputation; batch read not yet started</li>
+<li><strong>Reth/Erigon</strong>: No updates provided</li>
+</ul>
+<p>The key insight: We don&rsquo;t need all clients ready to start gathering critical benchmark data.</p>
+<hr>
+<h2 id="benchmarking-strategy-why-real-state-matters">Benchmarking Strategy: Why Real State Matters<a hidden class="anchor" aria-hidden="true" href="#benchmarking-strategy-why-real-state-matters">#</a></h2>
+<p>The core question benchmarking must answer: <strong>Do we actually need state locations in the BAL?</strong></p>
+<h3 id="test-environment-requirements">Test Environment Requirements<a hidden class="anchor" aria-hidden="true" href="#test-environment-requirements">#</a></h3>
+<p>Testing on empty or small pre-state networks is useless. State reads are too fast without realistic data—you won&rsquo;t see any performance difference. The team is planning mainnet shadow fork as the primary testing ground. Only with mainnet-scale state can we measure real impact.</p>
+<p><strong>BloatNet</strong> will be used for future scenario testing—a shadow fork of mainnet with artificially increased state size, letting us test what happens as mainnet continues to grow.</p>
+<p><strong>DevNet 2</strong> won&rsquo;t be used for performance testing. It&rsquo;s an empty network with ~150M gas limit, focused on consensus mechanisms, BAL payload structure, and new Engine API methods. It&rsquo;s about proving correctness, not measuring performance.</p>
+<h3 id="what-were-measuring">What We&rsquo;re Measuring<a hidden class="anchor" aria-hidden="true" href="#what-were-measuring">#</a></h3>
+<p>Three scenarios will be compared:</p>
+<ol>
+<li><strong>Parallel execution only</strong> (baseline)</li>
+<li><strong>Parallel execution + Batch I/O</strong> (full optimization)</li>
+<li><strong>Individual impact</strong> of each optimization</li>
+</ol>
+<p><strong>The critical question:</strong> Does Batch I/O (which depends on state locations in BAL) provide enough benefit to justify including state locations?</p>
+<p>State locations increase BAL size and add complexity, but they enable batch I/O prefetching. We need hard numbers to make this decision.</p>
+<hr>
+<h2 id="engine-api-methods-cl-el-coordination">Engine API Methods: CL-EL Coordination<a hidden class="anchor" aria-hidden="true" href="#engine-api-methods-cl-el-coordination">#</a></h2>
+<p><strong>The problem:</strong> BAL is part of the execution payload in beacon blocks. Just like transactions, execution layer clients cannot process blocks without the BAL.</p>
+<h3 id="two-approaches-debated">Two Approaches Debated<a hidden class="anchor" aria-hidden="true" href="#two-approaches-debated">#</a></h3>
+<p><strong>Option 1: Required Field (Current Approach)</strong></p>
+<ul>
+<li>CL must store BAL or blind it (like transactions)</li>
+<li>Requires new Engine API methods: <code>getPayloadBodiesByRange</code> and <code>getPayloadBodiesByHash</code> must include BAL</li>
+<li>Some CLs depend on these methods for deduplication and reducing disk storage</li>
+</ul>
+<p><strong>Option 2: Optional Field</strong></p>
+<ul>
+<li>During gossip: CL passes BAL to EL</li>
+<li>During sync: CL passes payload without BAL; EL fetches from DevP2P</li>
+<li><strong>Problem:</strong> EL can&rsquo;t synchronously process and return payload status; must return &lsquo;syncing&rsquo; state</li>
+<li>Makes execution flow significantly more complex</li>
+</ul>
+<p><strong>Decision:</strong> Keep current approach (required field) with two new Engine API methods. This allows CL clients to prune BAL for storage efficiency but retrieve it from EL when needed for helping other nodes sync.</p>
+<hr>
+<h2 id="the-malicious-bal-attack-a-critical-security-issue">The Malicious BAL Attack: A Critical Security Issue<a hidden class="anchor" aria-hidden="true" href="#the-malicious-bal-attack-a-critical-security-issue">#</a></h2>
+<p>This was the most important discussion of the call. Toni presented a detailed attack scenario with visual diagrams.</p>
+<h3 id="understanding-block-execution">Understanding Block Execution<a hidden class="anchor" aria-hidden="true" href="#understanding-block-execution">#</a></h3>
+<p><strong>Without BAL (60M gas limit):</strong></p>
+<pre tabindex="0"><code>I/O → Execution → I/O → Execution → State Root Calculation
+</code></pre><p>Sequential I/O operations slow everything down.</p>
+<p><strong>With BAL - Honest Proposer (300M gas limit):</strong></p>
+<pre tabindex="0"><code>Batch I/O (parallel) → Minimal I/O → Execution (parallel) → State Root Calc (parallel)
+</code></pre><p>Most state pre-cached through batch I/O. Gas limit can increase significantly.</p>
+<h3 id="the-attack-vector">The Attack Vector<a hidden class="anchor" aria-hidden="true" href="#the-attack-vector">#</a></h3>
+<p><strong>The fundamental weakness:</strong> State locations in BAL aren&rsquo;t mapped to transaction indices. From any single transaction&rsquo;s perspective, you cannot determine if the BAL&rsquo;s state locations are correct or garbage.</p>
+<p><strong>Attack scenario:</strong></p>
+<ol>
+<li>Malicious proposer creates BAL with <code>(gas_limit - max_tx_size) / 2100</code> storage slots</li>
+<li>All declared storage slots are garbage—never accessed</li>
+<li>Block&rsquo;s transactions only perform heavy computation</li>
+</ol>
+<p><strong>Why this works:</strong></p>
+<ul>
+<li>Each core executing transactions can validate state diffs correctly</li>
+<li>But storage keys aren&rsquo;t mapped to transaction indices</li>
+<li>No single core can determine if the BAL is invalid</li>
+<li>Only after executing ALL transactions can you realize the BAL was garbage</li>
+</ul>
+<p><strong>The damage:</strong></p>
+<ul>
+<li>Proposer sacrifices their block (it&rsquo;s invalid)</li>
+<li>Forces validators to waste batch I/O + execution time</li>
+<li>Potentially triggers reorgs on next slot</li>
+<li>Limits how aggressively we can scale gas limits</li>
+</ul>
+<h3 id="three-proposed-solutions">Three Proposed Solutions<a hidden class="anchor" aria-hidden="true" href="#three-proposed-solutions">#</a></h3>
+<p><strong>Option 1: Do Nothing (Smart Client-Level Detection)</strong></p>
+<ul>
+<li>Set caps on BAL based on gas limits</li>
+<li>Track gas usage and accessed locations during execution</li>
+<li>Fail early if remaining gas can&rsquo;t access all declared slots</li>
+<li>Uncertainty: Is worst-case still equivalent to having no state locations?</li>
+</ul>
+<p><strong>Option 2: Remove State Locations Entirely</strong></p>
+<ul>
+<li>Eliminates attack vector completely</li>
+<li>Also eliminates batch I/O benefits</li>
+<li>Depends on benchmark results</li>
+</ul>
+<p><strong>Option 3: Add First Access Index (Most Elegant)</strong></p>
+<p>Map each state location to the transaction index where it&rsquo;s first accessed.</p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Early failure detection (can fail after first transaction batch, not all transactions)</li>
+<li>Correct-order prefetching</li>
+<li>No duplication of addresses and storage keys</li>
+</ul>
+<p><strong>Costs:</strong></p>
+<ul>
+<li>Average +4% size increase (1-4 KiB compressed)</li>
+<li>Worst-case: 0.92 MB → 0.97 MB (still 0.43 MB smaller than worst-case calldata block)</li>
+<li>Added implementation complexity</li>
+</ul>
+<p><strong>How it prevents the attack:</strong></p>
+<p>Without first_access_index:</p>
+<ul>
+<li>8 transactions, 4 cores</li>
+<li>Must execute all 8 before discovering BAL is invalid</li>
+</ul>
+<p>With first_access_index:</p>
+<ul>
+<li>Execute first 4 transactions (one per core)</li>
+<li>Each core checks: did this transaction access slots with matching first_access_index?</li>
+<li>Can fail immediately if transaction only does computation</li>
+<li>No need to execute remaining 4 transactions</li>
+</ul>
+<hr>
+<h2 id="additional-discussions">Additional Discussions<a hidden class="anchor" aria-hidden="true" href="#additional-discussions">#</a></h2>
+<p><strong>Specification Status:</strong></p>
+<ul>
+<li>Felipe and Rahul created comprehensive tests for access edge cases</li>
+<li>Clients passing tests, good alignment across implementations</li>
+<li>Geth&rsquo;s simplification proposal rejected due to potential griefing vector (1-gas call attack)</li>
+</ul>
+<p><strong>Performance Metrics:</strong></p>
+<p>Stefan proposed OpenTelemetry for standardized metrics across clients. Key metrics: prefetching time, parallel execution efficiency, batch I/O performance. Geth and Reth implementing support. Goal: Grafana visualization in Kurtosis for apples-to-apples comparisons.</p>
+<hr>
+<h2 id="key-takeaways">Key Takeaways<a hidden class="anchor" aria-hidden="true" href="#key-takeaways">#</a></h2>
+<ol>
+<li><strong>DevNet 2 is ready</strong> — Focus on consensus testing, not performance measurement</li>
+<li><strong>State locations decision is data-driven</strong> — Need benchmark results from mainnet shadow fork</li>
+<li><strong>Malicious BALs are a real threat</strong> — Not theoretical; could trigger reorgs and limit scaling</li>
+<li><strong>First access index is promising</strong> — Elegant solution with modest overhead (~4% size increase)</li>
+<li><strong>Hard data required</strong> — No decision until comprehensive benchmarks complete</li>
+</ol>
+<hr>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<ul>
+<li><a href="https://github.com/ethereum/EIPs/pull/7928">EIP-7928 Specification</a></li>
+<li><a href="https://github.com/ethereum/EIPs/pull/11181">PR #11181 (First Access Index)</a></li>
+<li>Call Recording: <a href="https://www.youtube.com/watch?v=v4_5quvIJh0&amp;t=354s">https://www.youtube.com/watch?v=v4_5quvIJh0&amp;t=354s</a></li>
+</ul>
+<hr>
+<h2 id="closing-thoughts">Closing Thoughts<a hidden class="anchor" aria-hidden="true" href="#closing-thoughts">#</a></h2>
+<p>What struck me about this call was the maturity of the decision-making process. Nobody rushed to conclusions. Nobody dismissed security concerns as unlikely. Core developers acknowledged uncertainty, proposed multiple solutions with clear tradeoffs, and committed to letting data drive decisions.</p>
+<hr>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://0u-Y.github.io/tags/eip-7928/">EIP-7928</a></li>
+      <li><a href="https://0u-Y.github.io/tags/block-access-lists/">Block Access Lists</a></li>
+      <li><a href="https://0u-Y.github.io/tags/devnet/">DevNet</a></li>
+      <li><a href="https://0u-Y.github.io/tags/breakout-call/">Breakout Call</a></li>
+      <li><a href="https://0u-Y.github.io/tags/security/">Security</a></li>
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://0u-Y.github.io/">0u-Y&#39;s Log</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

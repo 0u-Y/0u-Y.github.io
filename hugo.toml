@@ -17,7 +17,7 @@ theme = "PaperMod"
     ShowToc = true
     TocOpen = true
     ShowReadingTime = true
-    ShowShareButtons = true
+    ShowShareButtons = false
     ShowPostNavLinks = true
 
     [params.label]
@@ -42,3 +42,14 @@ theme = "PaperMod"
         name = "Posts"
         url = "/posts/"
         weight = 10
+
+    [[menu.main]]
+        identifier = "categories"
+        name = "Categories"
+        url = "/categories/"
+    
+    [[menu.main]]
+        identifier = "tags"
+        name = "Tags"
+        url = "/tags/"
+        weight = 30
