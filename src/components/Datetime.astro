@@ -1,0 +1,26 @@
+---
+import config from "@/config";
+type Props = {
+  pubDatetime: string | Date;
+  modDatetime?: string | Date | null;
+  timezone?: string;
+  class?: string;
+  size?: "sm" | "lg";
+};
+const {
+  pubDatetime,
+  timezone = config.site.timezone,
+  class: className,
+} = Astro.props;
+const date = new Date(pubDatetime);
+const formatted = new Intl.DateTimeFormat("en-GB", {
+  day: "2-digit",
+  month: "short",
+  year: "numeric",
+  timeZone: timezone,
+}).format(date);
+---
+
+<time class:list={["date", className]} datetime={date.toISOString()}
+  >{formatted}</time
+>

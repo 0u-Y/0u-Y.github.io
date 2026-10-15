@@ -1,0 +1,74 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Card from "@/components/Card.astro";
+import { getSortedPosts } from "@/utils/getSortedPosts";
+import config from "@/config";
+import { profile } from "@/astro-paper.config";
+import Arrow from "@/assets/icons/IconArrowRight.svg";
+const posts = getSortedPosts(await getCollection("posts"));
+const featured = posts.filter(post => post.data.featured).slice(0, 3);
+---
+
+<Layout>
+  <main id="main">
+    <section class="introduction" aria-labelledby="intro-heading">
+      <h1 id="intro-heading">
+        {profile.name}<span class="title-period">.</span>
+      </h1>
+      <p class="intro-copy">{profile.introduction}</p>
+      <div class="intro-links">
+        <a href="/research/">Research <Arrow /></a><a href="/open-source/"
+          >Open Source <Arrow /></a
+        >
+      </div>
+      <div class="contact-links">
+        {profile.github && <a href={profile.github}>GitHub</a>}<a
+          href="/rss.xml">Subscribe via RSS</a
+        >
+      </div>
+    </section>
+    {
+      featured.length > 0 && (
+        <section class="writing-section" aria-labelledby="selected-heading">
+          <>
+            <div class="section-heading">
+              <>
+                <h2 id="selected-heading">Selected writing</h2>
+                <span>A few places to start</span>
+              </>
+            </div>
+            <ul class="post-list">
+              {featured.map(post => (
+                <Card post={post} featured />
+              ))}
+            </ul>
+          </>
+        </section>
+      )
+    }
+    <section class="writing-section" aria-labelledby="recent-heading">
+      <div class="section-heading">
+        <h2 id="recent-heading">Recent writing</h2><span
+          >Research & open source</span
+        >
+      </div>{
+        posts.length ? (
+          <ul class="post-list">
+            {posts.slice(0, config.posts.perIndex).map(post => (
+              <Card post={post} />
+            ))}
+          </ul>
+        ) : (
+          <p class="empty-state">
+            No writing published yet. Questions and work in progress will find a
+            home here.
+          </p>
+        )
+      }
+    </section>
+    <aside class="closing-note">
+      A working notebook. Questions are welcome; conclusions are provisional.
+    </aside>
+  </main>
+</Layout>

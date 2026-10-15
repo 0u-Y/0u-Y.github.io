@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.astro/
+.impeccable/
+package-lock.json
+*.mdx
+public/licenses/

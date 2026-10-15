@@ -1,0 +1,38 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { profile } from "@/astro-paper.config";
+---
+
+<Layout title={`About — ${profile.name}`}
+  ><main id="main">
+    <header class="page-heading">
+      <h1>About</h1><p>{profile.introduction}</p>
+    </header><div class="prose about-prose">
+      <h2>A little background</h2><p>{profile.biography}</p><h2>
+        Areas of interest
+      </h2><ul>{profile.interests.map(interest => <li>{interest}</li>)}</ul><h2>
+        Contributions & activities
+      </h2><p>{profile.activity}</p>{
+        (profile.github || profile.email) && (
+          <>
+            <>
+              <h2>Get in touch</h2>
+              <ul class="plain-list">
+                {profile.github && (
+                  <li>
+                    <a href={profile.github}>GitHub</a>
+                  </li>
+                )}
+                {profile.email && (
+                  <li>
+                    <a href={`mailto:${profile.email}`}>{profile.email}</a>
+                  </li>
+                )}
+              </ul>
+            </>
+          </>
+        )
+      }
+    </div>
+  </main></Layout
+>

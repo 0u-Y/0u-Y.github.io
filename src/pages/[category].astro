@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Card from "@/components/Card.astro";
+import { getSortedPosts } from "@/utils/getSortedPosts";
+export function getStaticPaths() {
+  return [
+    {
+      params: { category: "research" },
+      props: {
+        title: "Research",
+        description:
+          "Questions before conclusions. Literature reviews, ideas in progress, and experiments on Ethereum clients and distributed systems.",
+      },
+    },
+    {
+      params: { category: "open-source" },
+      props: {
+        title: "Open Source",
+        description:
+          "The work behind a contribution. Pull requests, bug investigations, and monthly notes from open source.",
+      },
+    },
+  ];
+}
+const { title, description } = Astro.props;
+const posts = getSortedPosts(await getCollection("posts")).filter(
+  post => post.data.category === Astro.params.category
+);
+---
+
+<Layout title={`${title} — Research & Open Source`} {description}
+  ><main id="main">
+    <header class="page-heading">
+      <h1>{title}</h1><p>{description}</p>
+    </header><div class="section-heading">
+      <h2>All writing</h2><span
+        >{posts.length} {posts.length === 1 ? "entry" : "entries"}</span
+      >
+    </div>{
+      posts.length ? (
+        <ul class="post-list">
+          {posts.map(post => (
+            <Card post={post} showCategory={false} />
+          ))}
+        </ul>
+      ) : (
+        <p class="empty-state">
+          No entries yet. Work in progress belongs here, too.
+        </p>
+      )
+    }
+  </main></Layout
+>
