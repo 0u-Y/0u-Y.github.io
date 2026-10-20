@@ -5,6 +5,7 @@ pubDatetime: 2026-09-01T09:00:00+09:00
 category: open-source
 format: monthly
 sample: true
+draft: true
 tags: [monthly, open-source]
 ---
 

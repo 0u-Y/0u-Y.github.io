@@ -2,10 +2,10 @@ import { defineAstroPaperConfig } from "./src/types/config";
 
 // Personal information lives here. Empty contacts are intentionally hidden.
 export const profile = {
-  name: "Your Name",
+  name: "YoungWoo Yang",
   introduction:
     "I study Ethereum clients and distributed systems, and contribute to open source. This is where I keep questions, experiments, and work in progress.",
-  github: "",
+  github: "https://github.com/0u-Y",
   email: "",
   interests: [
     "Ethereum clients & protocol implementation",
@@ -20,7 +20,7 @@ export const profile = {
 
 export default defineAstroPaperConfig({
   site: {
-    url: "https://example.com",
+    url: "https://0u-y.github.io",
     title: `${profile.name} — Research & Open Source`,
     author: profile.name,
     description:

@@ -6,6 +6,7 @@ category: research
 format: investigation
 featured: true
 sample: true
+draft: true
 tags: [ethereum, methodology]
 ---
 

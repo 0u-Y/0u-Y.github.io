@@ -25,7 +25,7 @@ npm run preview
 - `profile.interests`, `activity`: 관심 분야, 주요 기여와 활동
 - `profile.github`: 실제 GitHub 프로필 URL. 빈 값이면 모든 개인 GitHub 링크를 숨깁니다.
 - `profile.email`: 실제 이메일. 빈 값이면 이메일 링크와 연락 영역을 숨깁니다.
-- `site.url`: **호스팅 연결 전에 실제 사이트 주소로 교체**하세요. 현재 `https://example.com`은 canonical, RSS, sitemap용 placeholder입니다.
+- `site.url`: 현재 공개 주소는 `https://0u-y.github.io`입니다. 추후 도메인을 바꾸면 canonical, RSS, sitemap도 이 설정을 따릅니다.
 - `site.timezone`: 날짜 표시 기준. 기본값은 `Asia/Seoul`입니다.
 
 확인되지 않은 이력과 성과는 넣지 않았습니다. Home과 About의 공통 소개는 같은 설정을 사용합니다. UI는 영어이며, 한국어 글은 `lang: ko`로 지정합니다.
@@ -62,7 +62,7 @@ tags: [ethereum]
 
 글 URL은 `/posts/<파일명>/`입니다. 하위 폴더를 사용하면 폴더 경로도 포함됩니다. 파일명을 바꾸면 URL도 바뀌므로 공개 이후에는 주의하세요.
 
-초기 샘플 4개는 실제 연구나 기여 실적이 아닙니다. 구조를 확인한 뒤 삭제하거나 본인 글로 교체하세요. 모든 글을 삭제해도 Home과 카테고리 목록의 빈 상태가 표시됩니다.
+초기 샘플 4개는 `draft: true`로 비공개 처리했습니다. 실제 연구나 기여 실적이 아닙니다. 구조를 확인한 뒤 삭제하거나 본인 글로 교체하세요. 모든 글을 삭제해도 Home과 카테고리 목록의 빈 상태가 표시됩니다.
 
 ## 코드, 표, 이미지, MDX
 
@@ -72,11 +72,15 @@ tags: [ethereum]
 
 MDX에서는 기존 AstroPaper 컴포넌트를 사용할 수 있습니다. `src/content/posts/experiment-notebook.mdx`는 한국어 본문과 `ResponsiveTable` 사용 예시입니다.
 
-## 추후 호스팅 연결
+## GitHub Pages 배포
 
-공개 저장소는 [0u-Y/blog](https://github.com/0u-Y/blog)입니다. Git 기반 정적 호스팅에서 설치 명령을 `npm ci`, 빌드 명령을 `npm run build`, 출력 디렉토리를 `dist`로 설정하면 됩니다. `site.url`을 실제 주소로 바꾸고 호스팅의 Node 버전을 맞추세요.
+사이트는 [0u-y.github.io](https://0u-y.github.io/), 배포 저장소는 [0u-Y/0u-Y.github.io](https://github.com/0u-Y/0u-Y.github.io)입니다.
 
-호스팅은 아직 연결하지 않았습니다. 저장소를 호스팅 서비스에 연결하면 이후 commit·push에 맞춰 자동 배포할 수 있습니다.
+`main`에 push하면 `.github/workflows/deploy.yml`이 npm 의존성 설치, 빌드·검증, GitHub Pages 배포를 수행합니다. GitHub 저장소 Settings → Pages의 Source는 GitHub Actions입니다. Actions 화면에서 수동으로 재배포할 수도 있습니다.
+
+사이트는 사용자 홈페이지이므로 `/blog` 같은 `base` 경로를 사용하지 않습니다. 예전 Hugo 저장소와 Astro 블로그의 Git 이력은 모두 보존했습니다. 기존 EIP-7928 글은 본문과 URL `/posts/ethereum-protocol/eip-7928-breakout-call-11/`을 유지하고 Research로 옮겼습니다. 이전 Hugo 설정과 생성 산출물은 배포 소스에서 제거했습니다.
+
+원래 [0u-Y/blog](https://github.com/0u-Y/blog) 저장소는 초기 버전으로 남아 있습니다. 앞으로는 이 저장소의 `main`에 변경을 push하세요.
 
 ## 출처와 라이선스
 
