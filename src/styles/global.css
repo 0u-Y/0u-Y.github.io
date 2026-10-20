@@ -253,11 +253,6 @@ p {
 .site-footer a {
   color: var(--muted);
 }
-.rss-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
 .page-heading {
   padding: 66px 0 46px;
 }

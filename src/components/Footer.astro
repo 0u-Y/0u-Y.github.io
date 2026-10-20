@@ -1,13 +1,11 @@
 ---
 import { profile } from "@/astro-paper.config";
-import IconRss from "@/assets/icons/IconRss.svg";
 ---
 
 <footer class="site-footer">
   <span>© {new Date().getFullYear()} {profile.name}</span><div>
     {profile.github && <a href={profile.github}>GitHub</a>}<a
-      class="rss-link"
-      href="/rss.xml"><IconRss width="14" height="14" />RSS</a
-    ><a href="https://github.com/satnaing/astro-paper">Built with AstroPaper</a>
+      href="https://github.com/satnaing/astro-paper">Built with AstroPaper</a
+    >
   </div>
 </footer>

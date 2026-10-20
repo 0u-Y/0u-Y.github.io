@@ -23,9 +23,7 @@ const featured = posts.filter(post => post.data.featured).slice(0, 3);
         >
       </div>
       <div class="contact-links">
-        {profile.github && <a href={profile.github}>GitHub</a>}<a
-          href="/rss.xml">Subscribe via RSS</a
-        >
+        {profile.github && <a href={profile.github}>GitHub</a>}
       </div>
     </section>
     {

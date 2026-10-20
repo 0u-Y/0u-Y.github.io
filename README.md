@@ -15,7 +15,7 @@ npm test
 npm run preview
 ```
 
-개발 서버는 기본적으로 `http://localhost:4321`에서 열립니다. `npm run build`는 타입 검사 후 `dist/`를 생성합니다. `npm test`는 빌드 산출물의 메뉴, 카테고리, 글 경로와 RSS를 검사하므로 빌드 후 실행하세요. `npm run format:check`와 `npm run format`으로 형식을 확인하고 정리할 수 있습니다.
+개발 서버는 기본적으로 `http://localhost:4321`에서 열립니다. `npm run build`는 타입 검사 후 `dist/`를 생성합니다. `npm test`는 빌드 산출물의 메뉴, 카테고리, 글 경로와 사이트맵을 검사하므로 빌드 후 실행하세요. `npm run format:check`와 `npm run format`으로 형식을 확인하고 정리할 수 있습니다.
 
 ## 개인 정보 바꾸기
 
@@ -25,7 +25,7 @@ npm run preview
 - `profile.interests`, `activity`: 관심 분야, 주요 기여와 활동
 - `profile.github`: 실제 GitHub 프로필 URL. 빈 값이면 모든 개인 GitHub 링크를 숨깁니다.
 - `profile.email`: 실제 이메일. 빈 값이면 이메일 링크와 연락 영역을 숨깁니다.
-- `site.url`: 현재 공개 주소는 `https://0u-y.github.io`입니다. 추후 도메인을 바꾸면 canonical, RSS, sitemap도 이 설정을 따릅니다.
+- `site.url`: 현재 공개 주소는 `https://0u-y.github.io`입니다. 추후 도메인을 바꾸면 canonical, sitemap도 이 설정을 따릅니다.
 - `site.timezone`: 날짜 표시 기준. 기본값은 `Asia/Seoul`입니다.
 
 확인되지 않은 이력과 성과는 넣지 않았습니다. Home과 About의 공통 소개는 같은 설정을 사용합니다. UI는 영어이며, 한국어 글은 `lang: ko`로 지정합니다.
@@ -40,7 +40,7 @@ npm run preview
 ```yaml
 ---
 title: "A precise research question"
-description: "A short description for the list and RSS."
+description: "A short description for the list."
 pubDatetime: 2026-10-15T09:00:00+09:00
 category: research
 format: investigation
@@ -54,9 +54,9 @@ tags: [ethereum]
 필수 필드는 `title`, `description`, `pubDatetime`, `category`입니다. 카테고리는 `research` 또는 `open-source`만 허용합니다. 선택 필드 `format`은 `investigation`, `literature-review`, `experiment`, `contribution`, `monthly` 중 하나입니다. 월간 정리는 `category: open-source`와 `format: monthly`로 발행합니다. 별도 Monthly 메뉴는 없습니다.
 
 - `featured: true`: Home 대표 글에 표시합니다. 최대 3개이며 0개면 섹션을 숨깁니다.
-- `draft: true`: 개발 화면을 포함해 목록, 상세 경로, RSS에서 제외합니다.
+- `draft: true`: 개발 화면을 포함해 목록과 상세 경로에서 제외합니다.
 - 미래 `pubDatetime`: 개발 화면에서는 확인할 수 있고, 프로덕션 빌드에서는 발행 시간이 지난 글만 포함합니다. 예약 시간에 자동 공개하려면 해당 시간 이후 호스팅 재빌드가 필요합니다.
-- `modDatetime`: 선택적인 수정일. 최근 글 정렬과 RSS 날짜에 반영하고 상세 페이지에 수정일을 표시합니다.
+- `modDatetime`: 선택적인 수정일. 최근 글 정렬에 반영하고 상세 페이지에 수정일을 표시합니다.
 - `sample: true`: 예시임을 목록과 본문에 명시합니다. 본인 글에서는 생략하세요.
 - `lang: ko`: 한국어 글의 언어와 줄바꿈을 지정합니다.
 
@@ -86,6 +86,6 @@ MDX에서는 기존 AstroPaper 컴포넌트를 사용할 수 있습니다. `src/
 
 [AstroPaper v6.1.0](https://github.com/satnaing/astro-paper/releases/tag/v6.1.0), commit `4c33a60529f9c443145a89fe526ff231c009272d` 기반입니다. 원본 MIT 라이선스와 Sat Naing의 저작권 표시는 `LICENSE`에 보존했습니다. Footer에도 AstroPaper 출처 링크를 유지합니다.
 
-AstroPaper의 콘텐츠 컬렉션, 초안·예약 글 필터, 정렬, 경로, RSS, 글 메타데이터, MDX 표 컴포넌트와 코드 강조 구성을 활용했습니다. 기존 일반 블로그 메뉴와 데모 콘텐츠, 검색·테마 전환·동적 OG 생성 등 이번 범위에서 쓰지 않는 화면은 제거했습니다.
+AstroPaper의 콘텐츠 컬렉션, 초안·예약 글 필터, 정렬, 경로, 글 메타데이터, MDX 표 컴포넌트와 코드 강조 구성을 활용했습니다. 기존 일반 블로그 메뉴와 데모 콘텐츠, 검색·테마 전환·동적 OG 생성 등 이번 범위에서 쓰지 않는 화면은 제거했습니다.
 
 현재 의존성은 원본 태그의 Astro 6 구성에서 Astro 7과 호환 MDX로 갱신했습니다. 정확한 재현 버전은 lockfile을 따릅니다. 본문 영문 글꼴 Inter는 npm 패키지로 자체 호스팅하며, OFL 라이선스를 `public/licenses/Inter-OFL.txt`에 포함했습니다. 한국어는 기기에서 사용 가능한 한국어 시스템 글꼴을 사용합니다.

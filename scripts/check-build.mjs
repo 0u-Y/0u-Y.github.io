@@ -28,7 +28,6 @@ for (const page of pages) {
 }
 const research = await read("research/index.html");
 const openSource = await read("open-source/index.html");
-const rss = await read("rss.xml");
 const postEntries = await readdir(resolve(root, "posts"), {
   recursive: true,
 }).catch(() => []);
@@ -49,10 +48,8 @@ for (const slug of slugs) {
     !otherCategory.includes(`/posts/${slug}/`),
     `${slug}: listed in wrong category`
   );
-  assert(rss.includes(`/posts/${slug}/`), `${slug}: missing from RSS`);
 }
-assert.equal((rss.match(/<item>/g) ?? []).length, slugs.length);
 assert((await read("sitemap-index.xml")).includes("sitemap"));
 console.log(
-  `Build checks passed: 4 primary pages, ${slugs.length} posts, RSS and sitemap.`
+  `Build checks passed: 4 primary pages, ${slugs.length} posts and sitemap.`
 );
