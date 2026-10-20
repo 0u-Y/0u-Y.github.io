@@ -78,7 +78,7 @@ MDX에서는 기존 AstroPaper 컴포넌트를 사용할 수 있습니다. `src/
 
 `main`에 push하면 `.github/workflows/deploy.yml`이 npm 의존성 설치, 빌드·검증, GitHub Pages 배포를 수행합니다. GitHub 저장소 Settings → Pages의 Source는 GitHub Actions입니다. Actions 화면에서 수동으로 재배포할 수도 있습니다.
 
-사이트는 사용자 홈페이지이므로 `/blog` 같은 `base` 경로를 사용하지 않습니다. 예전 Hugo 저장소와 Astro 블로그의 Git 이력은 모두 보존했습니다. 기존 EIP-7928 글은 본문과 URL `/posts/ethereum-protocol/eip-7928-breakout-call-11/`을 유지하고 Research로 옮겼습니다. 이전 Hugo 설정과 생성 산출물은 배포 소스에서 제거했습니다.
+사이트는 사용자 홈페이지이므로 `/blog` 같은 `base` 경로를 사용하지 않습니다. 예전 Hugo 저장소와 Astro 블로그의 Git 이력은 모두 보존했습니다. 이전 Hugo 설정과 생성 산출물은 배포 소스에서 제거했습니다.
 
 원래 [0u-Y/blog](https://github.com/0u-Y/blog) 저장소는 초기 버전으로 남아 있습니다. 앞으로는 이 저장소의 `main`에 변경을 push하세요.
 
