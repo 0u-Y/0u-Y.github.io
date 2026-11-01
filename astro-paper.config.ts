@@ -6,16 +6,7 @@ export const profile = {
   introduction:
     "I contribute to Ethereum clients and study blockchain systems. Here, I share notes on core development, research papers, and experiments",
   github: "https://github.com/0u-Y",
-  email: "",
-  interests: [
-    "Ethereum clients & protocol implementation",
-    "Distributed systems & peer-to-peer networks",
-    "Testing, performance & reliability",
-  ],
-  biography:
-    "Add a short introduction here: what you are working on, how you approach research, and what you would like to explore next.",
-  activity:
-    "Add selected contributions, pull requests, and other activities here. Include links and a short description of your role.",
+  email: "yyw1000@naver.com",
 };
 
 export default defineAstroPaperConfig({

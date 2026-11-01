@@ -21,14 +21,13 @@ npm run preview
 
 루트의 `astro-paper.config.ts`에서 관리합니다.
 
-- `profile.name`, `introduction`, `biography`: 이름과 소개
-- `profile.interests`, `activity`: 관심 분야, 주요 기여와 활동
+- `profile.name`, `introduction`: 이름과 Home 소개
 - `profile.github`: 실제 GitHub 프로필 URL. 빈 값이면 모든 개인 GitHub 링크를 숨깁니다.
-- `profile.email`: 실제 이메일. 빈 값이면 이메일 링크와 연락 영역을 숨깁니다.
+- `profile.email`: 실제 이메일. 빈 값이면 이메일 링크를 숨깁니다. GitHub와 이메일이 모두 비어 있으면 About 연락 영역도 숨깁니다.
 - `site.url`: 현재 공개 주소는 `https://ericyang.dev`입니다. 추후 도메인을 바꾸면 canonical, sitemap도 이 설정을 따릅니다.
 - `site.timezone`: 날짜 표시 기준. 기본값은 `Asia/Seoul`입니다.
 
-확인되지 않은 이력과 성과는 넣지 않았습니다. Home과 About의 공통 소개는 같은 설정을 사용합니다. UI는 영어이며, 한국어 글은 `lang: ko`로 지정합니다.
+About 본문과 기여 프로젝트 링크는 `src/pages/about.astro`에서 수정합니다. 이름과 연락처는 위 설정을 공유합니다. 확인되지 않은 이력과 성과는 넣지 않았습니다. UI는 영어이며, 한국어 글은 `lang: ko`로 지정합니다.
 
 ## 글 추가하기
 

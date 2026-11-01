@@ -3,36 +3,47 @@ import Layout from "@/layouts/Layout.astro";
 import { profile } from "@/astro-paper.config";
 ---
 
-<Layout title={`About — ${profile.name}`}
-  ><main id="main">
+<Layout title={`About — ${profile.name}`}>
+  <main id="main">
     <header class="page-heading">
-      <h1>About</h1><p>{profile.introduction}</p>
-    </header><div class="prose about-prose">
-      <h2>A little background</h2><p>{profile.biography}</p><h2>
-        Areas of interest
-      </h2><ul>{profile.interests.map(interest => <li>{interest}</li>)}</ul><h2>
-        Contributions & activities
-      </h2><p>{profile.activity}</p>{
-        (profile.github || profile.email) && (
-          <>
-            <>
-              <h2>Get in touch</h2>
-              <ul class="plain-list">
-                {profile.github && (
-                  <li>
-                    <a href={profile.github}>GitHub</a>
-                  </li>
-                )}
-                {profile.email && (
-                  <li>
-                    <a href={`mailto:${profile.email}`}>{profile.email}</a>
-                  </li>
-                )}
-              </ul>
-            </>
-          </>
-        )
-      }
+      <h1>About</h1>
+    </header>
+    <div class="prose">
+      <p>
+        I’m {profile.name}. I contribute to Ethereum clients, including{" "}
+        <a
+          href="https://github.com/sigp/lighthouse/pulls?q=is%3Apr+author%3A0u-Y"
+          >Lighthouse</a
+        >{" "}
+        and{" "}
+        <a
+          href="https://github.com/grandinetech/grandine/pulls?q=is%3Apr+author%3A0u-Y"
+          >Grandine</a
+        >, and am interested in blockchain research.
+      </p>
+      <p>
+        Here I document core development, research notes, and experiments. I
+        also keep a <a href="/open-source/">monthly log</a> of my open-source work.
+      </p>
     </div>
-  </main></Layout
->
+    {
+      (profile.github || profile.email) && (
+        <div class="contact-links">
+          {profile.github && <a href={profile.github}>GitHub</a>}
+          {profile.email && <a href={`mailto:${profile.email}`}>Email</a>}
+        </div>
+      )
+    }
+  </main>
+</Layout>
+
+<style>
+  .page-heading {
+    padding-bottom: 8px;
+  }
+  .contact-links {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+</style>
