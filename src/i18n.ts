@@ -24,11 +24,8 @@ export const ui = {
     selected: "Selected writing",
     selectedHint: "A few places to start",
     recent: "Recent writing",
-    recentHint: "Research & open source",
     noWriting:
       "No writing published yet. Questions and work in progress will find a home here.",
-    closing:
-      "A working notebook. Questions are welcome; conclusions are provisional.",
     allWriting: "All writing",
     noEntries: "No entries yet. Work in progress belongs here, too.",
     researchDescription:
@@ -58,10 +55,7 @@ export const ui = {
     selected: "주요 글",
     selectedHint: "먼저 읽어볼 글",
     recent: "최근 글",
-    recentHint: "연구와 오픈소스 기록",
     noWriting: "아직 공개한 글이 없습니다.",
-    closing:
-      "공부하며 남기는 기록입니다. 질문은 언제든 환영합니다. 적어둔 생각은 달라질 수 있습니다.",
     allWriting: "전체 글",
     noEntries: "아직 공개한 글이 없습니다.",
     researchDescription:
