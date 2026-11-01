@@ -28,9 +28,7 @@ const category = post.data.category === "research" ? "Research" : "Open Source";
     <header class="article-heading">
       <a class="back-link" href={`/${post.data.category}/`}
         >Back to {category}</a
-      ><h1>{post.data.title}</h1><p>{post.data.description}</p><div
-        class="article-meta"
-      >
+      ><h1>{post.data.title}</h1><div class="article-meta">
         <Datetime pubDatetime={post.data.pubDatetime} />{
           post.data.modDatetime && (
             <span>
