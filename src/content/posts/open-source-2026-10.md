@@ -36,11 +36,9 @@ In October, I continued working on Lighthouse and Grandine, covering peer handli
 - Picked up the Gloas attestation packer work again after putting it off for a while.
 - Implemented a **greedy baseline** that selects final on-chain aggregates within the block limit.
 
-The baseline is in place, but balancing **packing quality and runtime** does not look straightforward. The next step is to:
+With the baseline in place, the next step is optimization. Balancing **packing quality and runtime** does not look straightforward, so I expect it will take a fair amount of reading and measurement to understand which approaches actually help.
 
-- Read through relevant references and existing approaches.
-- Measure different approaches under a range of conditions to understand what actually helps.
-- Document the experiments and results as the work progresses.
+I’m looking forward to this part. It should be a chance to dig deeper into the algorithms behind attestation packing and see how those ideas hold up in a client.
 
 ### [Keep fallback execution clients updated #1024](https://github.com/grandinetech/grandine/pull/1024)
 
