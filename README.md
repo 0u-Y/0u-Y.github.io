@@ -17,6 +17,8 @@ npm run preview
 
 개발 서버는 기본적으로 `http://localhost:4321`에서 열립니다. `npm run build`는 타입 검사 후 `dist/`를 생성합니다. `npm test`는 빌드 산출물의 메뉴, 카테고리, 글 경로와 사이트맵을 검사하므로 빌드 후 실행하세요. `npm run format:check`와 `npm run format`으로 형식을 확인하고 정리할 수 있습니다.
 
+CSS는 HTML 안에 포함합니다. GitHub Pages 재배포 후 캐시된 페이지가 삭제된 이전 CSS 파일을 요청해 스타일을 잃는 문제를 방지하며, `npm test`에서 이 구성을 검사합니다.
+
 ## 개인 정보 바꾸기
 
 루트의 `astro-paper.config.ts`에서 관리합니다.

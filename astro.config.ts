@@ -18,6 +18,8 @@ export default defineConfig({
   site: config.site.url,
   output: "static",
   trailingSlash: "always",
+  // Keep cached pages styled when a deployment removes old hashed CSS files.
+  build: { inlineStylesheets: "always" },
   integrations: [
     mdx(),
     sitemap({

@@ -50,6 +50,24 @@ for (const slug of slugs) {
   );
 }
 assert((await read("sitemap-index.xml")).includes("sitemap"));
+for (const page of [
+  ...pages,
+  "404.html",
+  ...slugs.map(slug => `posts/${slug}/index.html`),
+]) {
+  const html = await read(page);
+  assert(
+    !/<link\b[^>]*\brel="stylesheet"/.test(html),
+    `${page}: cached HTML must not depend on replaceable CSS files`
+  );
+  const styles = [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/g)]
+    .map(match => match[1])
+    .join("\n");
+  assert(
+    styles.includes(".site-header"),
+    `${page}: site styles must be inline`
+  );
+}
 console.log(
   `Build checks passed: 4 primary pages, ${slugs.length} posts and sitemap.`
 );
