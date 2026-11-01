@@ -31,8 +31,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build and verify
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
         run: npm run build && npm test
       - name: Upload site
         uses: actions/upload-pages-artifact@v5

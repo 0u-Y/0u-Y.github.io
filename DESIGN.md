@@ -10,7 +10,6 @@ colors:
   intro-copy: "#4a525b"
   inline-code: "#efefeb"
   code-block: "#f3f3ef"
-  preview-surface: "#f5f5f1"
 typography:
   display:
     fontFamily: '"Inter Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif'
@@ -27,9 +26,6 @@ typography:
     fontFamily: '"Inter Variable", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif'
     fontSize: "16px"
     lineHeight: 1.75
-  preview-summary:
-    fontSize: "13px"
-    lineHeight: 1.8
   date:
     fontFamily: '"SFMono-Regular", Consolas, "Liberation Mono", monospace'
     fontSize: "11px"
@@ -37,7 +33,6 @@ typography:
 rounded:
   label: "3px"
   code-block: "4px"
-  preview: "6px"
 components:
   navigation:
     textColor: "{colors.muted}"
@@ -105,7 +100,6 @@ Content lists and sections remain unboxed. Rules are 1px. Small labels, inline c
 - **Sample label and notice:** a compact outlined label identifies sample entries; an article notice sits between two rules.
 - **Article code:** inline code uses a pale surface; blocks have padding, a thin border, and horizontal scrolling. Mobile block padding is 16px.
 - **Article quote:** a single blue left rule and 22px inset distinguish quoted text.
-- **GitHub PR preview:** a flat link block with a thin border and muted surface groups the GitHub source, linked PR title, short description, and repository reference. The whole block is keyboard accessible; long titles and repository names wrap on mobile. Heading labels remain outside the preview, and inline links stay inline.
 
 ## Do's and Don'ts
 
