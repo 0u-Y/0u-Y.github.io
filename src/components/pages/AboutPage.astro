@@ -1,0 +1,78 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { profile } from "@/astro-paper.config";
+import { getLanguage, localizedPath, ui } from "@/i18n";
+const lang = getLanguage(Astro.url.pathname);
+const t = ui[lang];
+---
+
+<Layout title={`${t.about} — ${profile.name}`}>
+  <main id="main">
+    <header class="page-heading">
+      <h1>{t.about}</h1>
+    </header>
+    <div class="prose">
+      {
+        lang === "ko" ? (
+          <>
+            <p>
+              {profile.name}입니다.{" "}
+              <a href="https://github.com/sigp/lighthouse/pulls?q=is%3Apr+author%3A0u-Y">
+                Lighthouse
+              </a>
+              와{" "}
+              <a href="https://github.com/grandinetech/grandine/pulls?q=is%3Apr+author%3A0u-Y">
+                Grandine
+              </a>
+              를 비롯한 Ethereum 클라이언트에 기여하며, 블록체인 연구에 관심을
+              두고 있습니다.
+            </p>
+            <p>
+              이곳에는 코어 개발, 연구 노트, 실험을 기록합니다. 오픈소스 작업은{" "}
+              <a href={localizedPath("/open-source/", lang)}>월간 기록</a>으로도
+              정리하고 있습니다.
+            </p>
+          </>
+        ) : (
+          <>
+            <p>
+              I’m {profile.name}. I contribute to Ethereum clients, including{" "}
+              <a href="https://github.com/sigp/lighthouse/pulls?q=is%3Apr+author%3A0u-Y">
+                Lighthouse
+              </a>{" "}
+              and{" "}
+              <a href="https://github.com/grandinetech/grandine/pulls?q=is%3Apr+author%3A0u-Y">
+                Grandine
+              </a>
+              , and am interested in blockchain research.
+            </p>
+            <p>
+              Here I document core development, research notes, and experiments.
+              I also keep a <a href="/open-source/">monthly log</a> of my
+              open-source work.
+            </p>
+          </>
+        )
+      }
+    </div>
+    {
+      (profile.github || profile.email) && (
+        <div class="contact-links">
+          {profile.github && <a href={profile.github}>GitHub</a>}
+          {profile.email && <a href={`mailto:${profile.email}`}>{t.email}</a>}
+        </div>
+      )
+    }
+  </main>
+</Layout>
+
+<style>
+  .page-heading {
+    padding-bottom: 8px;
+  }
+  .contact-links {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+</style>

@@ -23,12 +23,13 @@ export default defineConfig({
   integrations: [
     mdx(),
     sitemap({
+      i18n: { defaultLocale: "en", locales: { en: "en", ko: "ko" } },
       filter: page =>
         config.features?.showArchives !== false || !page.endsWith("/archives/"),
     }),
   ],
   i18n: {
-    locales: ["en"],
+    locales: ["en", "ko"],
     defaultLocale: "en",
     routing: {
       prefixDefaultLocale: false,

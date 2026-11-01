@@ -1,0 +1,12 @@
+---
+import CategoryPage from "@/components/pages/CategoryPage.astro";
+export function getStaticPaths() {
+  return (["research", "open-source"] as const).map(category => ({
+    params: { category },
+    props: { category },
+  }));
+}
+const { category } = Astro.props;
+---
+
+<CategoryPage {category} />

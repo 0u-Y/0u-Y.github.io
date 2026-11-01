@@ -23,13 +23,26 @@ CSS는 HTML 안에 포함합니다. GitHub Pages 재배포 후 캐시된 페이�
 
 루트의 `astro-paper.config.ts`에서 관리합니다.
 
-- `profile.name`, `introduction`: 이름과 Home 소개
+- `profile.name`, `introduction`, `introductionKo`: 이름과 영문·한국어 Home 소개
 - `profile.github`: 실제 GitHub 프로필 URL. 빈 값이면 모든 개인 GitHub 링크를 숨깁니다.
 - `profile.email`: 실제 이메일. 빈 값이면 이메일 링크를 숨깁니다. GitHub와 이메일이 모두 비어 있으면 About 연락 영역도 숨깁니다.
 - `site.url`: 현재 공개 주소는 `https://ericyang.dev`입니다. 추후 도메인을 바꾸면 canonical, sitemap도 이 설정을 따릅니다.
 - `site.timezone`: 날짜 표시 기준. 기본값은 `Asia/Seoul`입니다.
 
-About 본문과 기여 프로젝트 링크는 `src/pages/about.astro`에서 수정합니다. 이름과 연락처는 위 설정을 공유합니다. 확인되지 않은 이력과 성과는 넣지 않았습니다. UI는 영어이며, 한국어 글은 `lang: ko`로 지정합니다.
+About 본문과 기여 프로젝트 링크는 `src/components/pages/AboutPage.astro`에서 수정합니다. 이름과 연락처는 위 설정을 공유합니다. 공통 UI 번역은 `src/i18n.ts`에 있습니다. 확인되지 않은 이력과 성과는 넣지 않았습니다.
+
+## EN / KO 버전
+
+영문은 기존 주소를 사용하고, 한국어는 `/ko/` 아래에서 제공합니다. 오른쪽 위의 EN / KO로 같은 페이지의 다른 언어 버전으로 이동합니다. 상단 메뉴 이름은 두 언어 모두 Home / Research / Open Source / About으로 유지합니다. 언어 선택은 URL로 유지하며 자동으로 언어를 바꾸지 않습니다.
+
+글은 다음처럼 같은 파일명으로 연결합니다. 원문과 번역은 한 번에 commit·push하면 됩니다.
+
+```text
+src/content/posts/open-source-2026-10.md     # lang: en
+src/content/posts/ko/open-source-2026-10.md  # lang: ko
+```
+
+번역 파일의 제목·설명·본문을 번역하고 `lang: ko`로 설정하세요. 날짜와 카테고리 등 나머지 발행 정보는 원문과 맞춥니다. 하위 폴더를 쓰면 `ko/` 다음의 폴더 구조도 원문과 맞추세요. 각 언어의 목록에는 해당 언어 글만 표시합니다. 공개된 번역이 없으면 그 언어 버튼을 비활성화하고, 초안이나 예약 글로 연결하지 않습니다. Markdown과 MDX에 같은 규칙이 적용됩니다.
 
 ## 글 추가하기
 

@@ -1,73 +1,136 @@
 import assert from "node:assert/strict";
-import { readFile, readdir } from "node:fs/promises";
-import { resolve } from "node:path";
+import { readFile, readdir, access } from "node:fs/promises";
+import { resolve, extname } from "node:path";
 
 const root = resolve("dist");
+const site = "https://ericyang.dev";
 const read = path => readFile(resolve(root, path), "utf8");
-const pages = [
-  "index.html",
-  "research/index.html",
-  "open-source/index.html",
-  "about/index.html",
-];
-for (const page of pages) {
-  const html = await read(page);
+const files = (await readdir(root, { recursive: true })).filter(path =>
+  path.endsWith(".html")
+);
+const toFile = path =>
+  extname(path) ? path.slice(1) : `${path.slice(1)}index.html`;
+const sitemap = await read("sitemap-0.xml");
+const postFiles = files.filter(path => path.includes("posts/"));
+const pullRequests = html =>
+  [...html.matchAll(/href="(https:\/\/github\.com\/[^\"]+\/pull\/\d+)"/g)].map(
+    match => match[1]
+  );
+
+for (const file of files) {
+  const html = await read(file);
+  const lang = file.startsWith("ko/") ? "ko" : "en";
+  const prefix = lang === "ko" ? "/ko" : "";
+  const path =
+    file === "404.html" ? "/404.html" : `/${file.replace(/index\.html$/, "")}`;
+  assert(
+    html.includes(`<html lang="${lang}"`),
+    `${file}: wrong document language`
+  );
   const nav = html.match(/<nav\b[^>]*>([\s\S]*?)<\/nav>/)?.[1];
-  assert(nav, `${page}: navigation missing`);
+  assert(nav, `${file}: navigation missing`);
   assert.deepEqual(
     [...nav.matchAll(/href="([^"]+)"/g)].map(match => match[1]),
-    ["/", "/research/", "/open-source/", "/about/"]
+    [
+      `${prefix}/`,
+      `${prefix}/research/`,
+      `${prefix}/open-source/`,
+      `${prefix}/about/`,
+    ],
+    `${file}: navigation must stay in the selected language`
   );
-  assert(html.includes('id="main"'), `${page}: skip-link target missing`);
-  for (const [, href] of html.matchAll(/href="(\/[^"#]*)"/g)) {
-    if (href.includes(".")) continue;
-    await read(
-      `${href.replace(/^\//, "").replace(/\/$/, "")}${href === "/" ? "" : "/"}index.html`
+  assert.deepEqual(
+    [...nav.matchAll(/<a\b[^>]*>([^<]+)<\/a>/g)].map(match => match[1].trim()),
+    ["Home", "Research", "Open Source", "About"],
+    `${file}: menu names must remain English`
+  );
+  assert(html.includes('id="main"'), `${file}: skip-link target missing`);
+  if (file !== "404.html") {
+    assert(
+      html.includes(`rel="canonical" href="${site}${path}"`),
+      `${file}: incorrect canonical URL`
     );
   }
-}
-const research = await read("research/index.html");
-const openSource = await read("open-source/index.html");
-const postEntries = await readdir(resolve(root, "posts"), {
-  recursive: true,
-}).catch(() => []);
-const slugs = postEntries
-  .filter(path => path.endsWith("/index.html"))
-  .map(path => path.slice(0, -"/index.html".length));
-for (const slug of slugs) {
-  const html = await read(`posts/${slug}/index.html`);
-  const category = html.includes('href="/research/">Back to Research')
-    ? research
-    : openSource;
-  const otherCategory = category === research ? openSource : research;
-  assert(
-    category.includes(`/posts/${slug}/`),
-    `${slug}: missing from category`
-  );
-  assert(
-    !otherCategory.includes(`/posts/${slug}/`),
-    `${slug}: listed in wrong category`
-  );
-}
-assert((await read("sitemap-index.xml")).includes("sitemap"));
-for (const page of [
-  ...pages,
-  "404.html",
-  ...slugs.map(slug => `posts/${slug}/index.html`),
-]) {
-  const html = await read(page);
+  for (const [, href] of html.matchAll(/href="(\/[^"#]*)"/g)) {
+    await access(resolve(root, toFile(href)));
+  }
+
+  const switcher = html.match(
+    /<div class="language-switch"[^>]*>([\s\S]*?)<\/div>/
+  )?.[1];
+  assert(switcher, `${file}: language switch missing`);
+  assert.match(switcher, new RegExp(`href="${path}"[^>]*aria-current="page"`));
+  const counterpart = lang === "ko" ? path.slice(3) : `/ko${path}`;
+  if (files.includes(toFile(counterpart))) {
+    assert(
+      switcher.includes(`href="${counterpart}"`),
+      `${file}: switch must link to the same page`
+    );
+    const otherLanguage = lang === "ko" ? "en" : "ko";
+    assert(
+      html.includes(`hreflang="${otherLanguage}" href="${site}${counterpart}"`),
+      `${file}: alternate-language metadata missing`
+    );
+  } else {
+    assert(
+      switcher.includes('aria-disabled="true"'),
+      `${file}: unavailable translation must be disabled`
+    );
+  }
+
+  const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? "";
+  for (const [, href] of main.matchAll(/href="((?:\/ko)?\/posts\/[^"#]+)"/g)) {
+    assert.equal(
+      href.startsWith("/ko/"),
+      lang === "ko",
+      `${file}: mixed-language post list`
+    );
+  }
+  if (file !== "404.html")
+    assert(
+      sitemap.includes(`<loc>${site}${path}</loc>`),
+      `${file}: sitemap entry missing`
+    );
+
   assert(
     !/<link\b[^>]*\brel="stylesheet"/.test(html),
-    `${page}: cached HTML must not depend on replaceable CSS files`
+    `${file}: cached HTML must not depend on replaceable CSS files`
   );
   const styles = [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/g)]
     .map(match => match[1])
     .join("\n");
   assert(
     styles.includes(".site-header"),
-    `${page}: site styles must be inline`
+    `${file}: site styles must be inline`
   );
 }
+
+for (const file of postFiles) {
+  const html = await read(file);
+  const categoryUrl = html.match(/class="back-link" href="([^"]+)"/)?.[1];
+  assert(categoryUrl, `${file}: category link missing`);
+  const category = await read(toFile(categoryUrl));
+  const postUrl = `/${file.replace(/index\.html$/, "")}`;
+  assert(
+    category.includes(`href="${postUrl}"`),
+    `${file}: missing from category`
+  );
+  const otherCategory = categoryUrl.endsWith("/research/")
+    ? categoryUrl.replace(/research\/$/, "open-source/")
+    : categoryUrl.replace(/open-source\/$/, "research/");
+  assert(
+    !(await read(toFile(otherCategory))).includes(`href="${postUrl}"`),
+    `${file}: listed in wrong category`
+  );
+  if (!file.startsWith("ko/") && files.includes(`ko/${file}`)) {
+    assert.deepEqual(
+      pullRequests(await read(`ko/${file}`)),
+      pullRequests(html),
+      `${file}: translation must preserve PR links and their order`
+    );
+  }
+}
+assert((await read("sitemap-index.xml")).includes("sitemap"));
 console.log(
-  `Build checks passed: 4 primary pages, ${slugs.length} posts and sitemap.`
+  `Build checks passed: ${files.length} pages, ${postFiles.length} post versions, language switching, internal links and inline CSS.`
 );

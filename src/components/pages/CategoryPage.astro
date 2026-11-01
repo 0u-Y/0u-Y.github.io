@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Card from "@/components/Card.astro";
+import { getSortedPosts } from "@/utils/getSortedPosts";
+import { getLanguage, ui } from "@/i18n";
+type Props = { category: "research" | "open-source" };
+const { category } = Astro.props;
+const lang = getLanguage(Astro.url.pathname);
+const t = ui[lang];
+const title = t[category];
+const description =
+  category === "research" ? t.researchDescription : t.openSourceDescription;
+const posts = getSortedPosts(await getCollection("posts")).filter(
+  post => post.data.category === category && post.data.lang === lang
+);
+---
+
+<Layout
+  title={`${title} — ${lang === "ko" ? "연구와 오픈소스" : "Research & Open Source"}`}
+  {description}
+  ><main id="main">
+    <header class="page-heading">
+      <h1>{title}</h1><p>{description}</p>
+    </header><div class="section-heading">
+      <h2>{t.allWriting}</h2><span
+        >{
+          lang === "ko"
+            ? `${posts.length}편`
+            : `${posts.length} ${posts.length === 1 ? "entry" : "entries"}`
+        }</span
+      >
+    </div>{
+      posts.length ? (
+        <ul class="post-list">
+          {posts.map(post => (
+            <Card post={post} showCategory={false} />
+          ))}
+        </ul>
+      ) : (
+        <p class="empty-state">{t.noEntries}</p>
+      )
+    }
+  </main></Layout
+>

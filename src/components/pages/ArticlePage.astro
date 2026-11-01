@@ -1,0 +1,51 @@
+---
+import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import PostLayout from "@/layouts/PostLayout.astro";
+import Datetime from "@/components/Datetime.astro";
+import { localizedPath, ui, type Translations } from "@/i18n";
+type Props = { post: CollectionEntry<"posts">; translations: Translations };
+const { post, translations } = Astro.props;
+const lang = post.data.lang;
+const t = ui[lang];
+const { Content } = await render(post);
+const category = t[post.data.category];
+const categoryUrl = localizedPath(`/${post.data.category}/`, lang);
+---
+
+<PostLayout
+  lang={post.data.lang}
+  title={post.data.title}
+  description={post.data.description}
+  pubDatetime={post.data.pubDatetime}
+  modDatetime={post.data.modDatetime}
+  {translations}
+>
+  <main id="main" lang={post.data.lang}>
+    <header class="article-heading">
+      <a class="back-link" href={categoryUrl}
+        >{lang === "ko" ? `${category} 목록으로` : `Back to ${category}`}</a
+      ><h1>{post.data.title}</h1><div class="article-meta">
+        <Datetime pubDatetime={post.data.pubDatetime} {lang} />{
+          post.data.modDatetime && (
+            <span>
+              {t.updated}{" "}
+              <Datetime pubDatetime={post.data.modDatetime} {lang} />
+            </span>
+          )
+        }{
+          post.data.sample && (
+            <span class="sample-label">{t.sampleArticle}</span>
+          )
+        }
+      </div>
+    </header>
+    {post.data.sample && <aside class="sample-notice">{t.sampleNotice}</aside>}
+    <article class="prose" data-pagefind-body><Content /></article>
+    <div class="article-end">
+      <a href={categoryUrl}
+        >{lang === "ko" ? `${category} 글 더 보기` : `More from ${category}`}</a
+      >
+    </div>
+  </main>
+</PostLayout>

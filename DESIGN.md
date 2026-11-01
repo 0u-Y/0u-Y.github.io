@@ -83,7 +83,7 @@ Article prose uses 16px type with line height 1.9; Korean prose uses line height
 
 The centered shell has a maximum outer width of 792px and 36px horizontal padding, yielding a 720px content measure. The desktop header is at least 112px tall. Introductory content has 76px top and 58px bottom padding. Post rows use a 112px date column, a flexible text column, a 22px gap, and 25px vertical padding.
 
-At widths of 600px and below, shell padding becomes 24px. The header stacks, navigation spreads across the available width, post dates move above their summaries, and the footer stacks. Introductory padding becomes 48px above and 42px below. Wide code and tables scroll horizontally within the reading column.
+At widths of 700px and below, the wordmark and language switch share the first row, with the main navigation below. At 600px and below, shell padding becomes 24px, post dates move above their summaries, and the footer stacks. Introductory padding becomes 48px above and 42px below. Wide code and tables scroll horizontally within the reading column. Korean text keeps words together, with overflow wrapping available for long tokens.
 
 ## Elevation & Depth
 
@@ -96,6 +96,7 @@ Content lists and sections remain unboxed. Rules are 1px. Small labels, inline c
 ## Components
 
 - **Navigation:** muted text becomes ink for the current page, with a 2px blue underline offset by 10px. Links underline on hover.
+- **Language switch:** a small EN / KO control sits to the right of the navigation on desktop and the wordmark on mobile. The active language uses blue, medium weight, and an underline. Each link has a 44px touch target. Unavailable translations are disabled and struck through. Main menu labels remain English in both languages.
 - **Post row:** date, ink title, muted summary, and compact metadata sit between thin rules. Hovering a title turns it blue.
 - **Sample label and notice:** a compact outlined label identifies sample entries; an article notice sits between two rules.
 - **Article code:** inline code uses a pale surface; blocks have padding, a thin border, and horizontal scrolling. Mobile block padding is 16px.

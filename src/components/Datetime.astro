@@ -1,19 +1,22 @@
 ---
 import config from "@/config";
+import type { Language } from "@/i18n";
 type Props = {
   pubDatetime: string | Date;
   modDatetime?: string | Date | null;
   timezone?: string;
   class?: string;
   size?: "sm" | "lg";
+  lang?: Language;
 };
 const {
   pubDatetime,
   timezone = config.site.timezone,
   class: className,
+  lang = "en",
 } = Astro.props;
 const date = new Date(pubDatetime);
-const formatted = new Intl.DateTimeFormat("en-GB", {
+const formatted = new Intl.DateTimeFormat(lang === "ko" ? "ko-KR" : "en-GB", {
   day: "2-digit",
   month: "short",
   year: "numeric",

@@ -1,0 +1,9 @@
+---
+import ArticlePage from "@/components/pages/ArticlePage.astro";
+import { getPostRoutes } from "@/utils/getPostRoutes";
+export async function getStaticPaths() {
+  return getPostRoutes("ko");
+}
+---
+
+<ArticlePage {...Astro.props} />

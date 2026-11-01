@@ -1,11 +1,14 @@
 ---
 import { profile } from "@/astro-paper.config";
+import { ui, type Language } from "@/i18n";
+type Props = { lang: Language };
+const { lang } = Astro.props;
 ---
 
 <footer class="site-footer">
   <span>© {new Date().getFullYear()} {profile.name}</span><div>
     {profile.github && <a href={profile.github}>GitHub</a>}<a
-      href="https://github.com/satnaing/astro-paper">Built with AstroPaper</a
+      href="https://github.com/satnaing/astro-paper">{ui[lang].builtWith}</a
     >
   </div>
 </footer>

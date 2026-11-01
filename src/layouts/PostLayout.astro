@@ -1,13 +1,15 @@
 ---
 import Layout from "./Layout.astro";
 import config from "@/config";
+import type { Language, Translations } from "@/i18n";
 
 type Props = {
   title?: string;
   description?: string;
   ogImage?: string;
   canonicalURL?: string;
-  lang?: string;
+  lang?: Language;
+  translations?: Translations;
   pubDatetime?: Date;
   modDatetime?: Date | null;
 };
@@ -22,12 +24,14 @@ const {
   pubDatetime,
   modDatetime,
   lang,
+  translations,
 } = Astro.props;
 
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   headline: title ?? site.title,
+  inLanguage: lang,
   image: ogImage,
   ...(pubDatetime && { datePublished: pubDatetime.toISOString() }),
   ...(modDatetime && { dateModified: modDatetime.toISOString() }),
@@ -41,7 +45,7 @@ const structuredData = {
 };
 ---
 
-<Layout {title} {description} {ogImage} {canonicalURL} {lang}>
+<Layout {title} {description} {ogImage} {canonicalURL} {lang} {translations}>
   <Fragment slot="head">
     <!-- Override og:type for article pages -->
     <meta property="og:type" content="article" />
