@@ -1,7 +1,7 @@
 ---
 title: "Open-source log: October 2026"
 description: "October work on Lighthouse and Grandine: peer handling, verification, attestation packing, and fallback execution clients."
-pubDatetime: 2026-11-02T09:00:00+09:00
+pubDatetime: 2026-11-02T04:57:28+09:00
 category: open-source
 format: monthly
 draft: false
