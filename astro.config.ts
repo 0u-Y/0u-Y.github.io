@@ -13,6 +13,7 @@ import {
 } from "@shikijs/transformers";
 import { transformerFileName } from "./src/utils/transformers/fileName";
 import config from "./astro-paper.config";
+import rehypeGitHubPreviews from "./src/utils/rehypeGitHubPreviews";
 
 export default defineConfig({
   site: config.site.url,
@@ -38,7 +39,7 @@ export default defineConfig({
         remarkToc,
         [remarkCollapse, { test: "Table of contents" }],
       ],
-      rehypePlugins: [rehypeCallouts],
+      rehypePlugins: [rehypeCallouts, rehypeGitHubPreviews],
     }),
     shikiConfig: {
       theme: "github-light",

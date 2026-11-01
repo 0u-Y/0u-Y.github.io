@@ -72,6 +72,18 @@ tags: [ethereum]
 
 MDX에서는 기존 AstroPaper 컴포넌트를 사용할 수 있습니다. `src/content/posts/experiment-notebook.mdx`는 한국어 본문과 `ResponsiveTable` 사용 예시입니다.
 
+## GitHub PR 미리보기
+
+Markdown과 MDX에서 제목 전체 또는 단독 문단으로 작성한 GitHub PR 링크는 미리보기 카드로 표시됩니다. 문장 중간에 넣은 링크는 일반 링크로 유지합니다.
+
+```markdown
+### [Gloas attestation packer #1003](https://github.com/grandinetech/grandine/pull/1003)
+
+- 작업하면서 확인한 내용을 여기에 기록합니다.
+```
+
+제목, 짧은 설명, 저장소와 PR 번호를 빌드할 때 가져오므로 독자의 브라우저에서는 GitHub API를 호출하지 않습니다. GitHub 조회가 실패하면 `src/data/github-previews.json`의 저장된 정보를 사용하며, 저장된 정보도 없으면 PR 링크와 저장소를 표시합니다. 저장된 정보는 이 파일에서 수정할 수 있습니다. 배포에서는 GitHub Actions가 제공하는 토큰을 조회에 사용하며 별도 API 키는 필요하지 않습니다.
+
 ## GitHub Pages 배포
 
 사이트는 [ericyang.dev](https://ericyang.dev/), 배포 저장소는 [0u-Y/0u-Y.github.io](https://github.com/0u-Y/0u-Y.github.io)입니다.

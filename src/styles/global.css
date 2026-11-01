@@ -477,3 +477,57 @@ p {
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
+
+.prose .github-preview {
+  margin: 16px 0 24px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #f5f5f1;
+}
+.prose .github-preview-link {
+  display: grid;
+  gap: 10px;
+  padding: 20px 24px;
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: inherit;
+}
+.prose .github-preview-link:hover {
+  background: #efefeb;
+}
+.prose .github-preview-source {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.prose .github-preview-title {
+  color: var(--blue);
+  font-size: 16px;
+  font-weight: 550;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.prose .github-preview-link:hover .github-preview-title {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.prose .github-preview-description {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.prose .github-preview-repository {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 600px) {
+  .prose .github-preview-link {
+    padding: 16px;
+  }
+}
