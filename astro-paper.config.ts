@@ -20,7 +20,7 @@ export const profile = {
 
 export default defineAstroPaperConfig({
   site: {
-    url: "https://0u-y.github.io",
+    url: "https://ericyang.dev",
     title: `${profile.name} — Research & Open Source`,
     author: profile.name,
     description:

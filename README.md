@@ -25,7 +25,7 @@ npm run preview
 - `profile.interests`, `activity`: 관심 분야, 주요 기여와 활동
 - `profile.github`: 실제 GitHub 프로필 URL. 빈 값이면 모든 개인 GitHub 링크를 숨깁니다.
 - `profile.email`: 실제 이메일. 빈 값이면 이메일 링크와 연락 영역을 숨깁니다.
-- `site.url`: 현재 공개 주소는 `https://0u-y.github.io`입니다. 추후 도메인을 바꾸면 canonical, sitemap도 이 설정을 따릅니다.
+- `site.url`: 현재 공개 주소는 `https://ericyang.dev`입니다. 추후 도메인을 바꾸면 canonical, sitemap도 이 설정을 따릅니다.
 - `site.timezone`: 날짜 표시 기준. 기본값은 `Asia/Seoul`입니다.
 
 확인되지 않은 이력과 성과는 넣지 않았습니다. Home과 About의 공통 소개는 같은 설정을 사용합니다. UI는 영어이며, 한국어 글은 `lang: ko`로 지정합니다.
@@ -74,11 +74,11 @@ MDX에서는 기존 AstroPaper 컴포넌트를 사용할 수 있습니다. `src/
 
 ## GitHub Pages 배포
 
-사이트는 [0u-y.github.io](https://0u-y.github.io/), 배포 저장소는 [0u-Y/0u-Y.github.io](https://github.com/0u-Y/0u-Y.github.io)입니다.
+사이트는 [ericyang.dev](https://ericyang.dev/), 배포 저장소는 [0u-Y/0u-Y.github.io](https://github.com/0u-Y/0u-Y.github.io)입니다.
 
 `main`에 push하면 `.github/workflows/deploy.yml`이 npm 의존성 설치, 빌드·검증, GitHub Pages 배포를 수행합니다. GitHub 저장소 Settings → Pages의 Source는 GitHub Actions입니다. Actions 화면에서 수동으로 재배포할 수도 있습니다.
 
-사이트는 사용자 홈페이지이므로 `/blog` 같은 `base` 경로를 사용하지 않습니다. 예전 Hugo 저장소와 Astro 블로그의 Git 이력은 모두 보존했습니다. 이전 Hugo 설정과 생성 산출물은 배포 소스에서 제거했습니다.
+사이트는 루트 주소를 사용하므로 `/blog` 같은 `base` 경로를 사용하지 않습니다. 커스텀 도메인은 저장소 Settings → Pages에서 설정합니다. Porkbun의 루트 ALIAS와 `www` CNAME은 `0u-y.github.io`를 가리킵니다. 네임서버 변경은 필요하지 않습니다. 예전 Hugo 저장소와 Astro 블로그의 Git 이력은 모두 보존했습니다. 이전 Hugo 설정과 생성 산출물은 배포 소스에서 제거했습니다.
 
 원래 [0u-Y/blog](https://github.com/0u-Y/blog) 저장소는 초기 버전으로 남아 있습니다. 앞으로는 이 저장소의 `main`에 변경을 push하세요.
 
