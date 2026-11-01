@@ -45,10 +45,10 @@ export const ui = {
     builtWith: "Built with AstroPaper",
   },
   ko: {
-    home: "홈",
-    research: "연구",
-    "open-source": "오픈소스",
-    about: "소개",
+    home: "Home",
+    research: "Research",
+    "open-source": "Open Source",
+    about: "About",
     navigation: "주 메뉴",
     language: "언어",
     unavailable: "아직 번역이 없습니다",
@@ -59,16 +59,15 @@ export const ui = {
     selectedHint: "먼저 읽어볼 글",
     recent: "최근 글",
     recentHint: "연구와 오픈소스 기록",
-    noWriting:
-      "아직 공개한 글이 없습니다. 질문과 진행 중인 작업부터 차근차근 기록하려고 합니다.",
+    noWriting: "아직 공개한 글이 없습니다.",
     closing:
-      "진행 중인 작업을 기록하는 공간입니다. 질문은 언제나 환영하며, 결론은 달라질 수 있습니다.",
+      "공부하며 남기는 기록입니다. 질문은 언제든 환영합니다. 적어둔 생각은 달라질 수 있습니다.",
     allWriting: "전체 글",
-    noEntries: "아직 글이 없습니다. 진행 중인 작업도 이곳에 기록할 예정입니다.",
+    noEntries: "아직 공개한 글이 없습니다.",
     researchDescription:
-      "결론에 앞서 질문을 기록합니다. Ethereum 클라이언트와 분산 시스템에 관한 선행연구 조사, 구상 중인 아이디어, 실험을 담습니다.",
+      "Ethereum 클라이언트와 분산 시스템에 관한 연구 노트입니다. 읽은 논문과 떠오른 질문, 실험 과정과 결과를 정리합니다.",
     openSourceDescription:
-      "기여를 만들어가는 과정을 기록합니다. PR 작업, 버그를 추적한 과정, 월간 오픈소스 활동을 담습니다.",
+      "오픈소스에 기여하면서 겪은 문제와 해결 과정을 기록합니다. 개별 PR 작업기와 매달의 활동을 정리합니다.",
     monthly: "월간 기록",
     sample: "예시",
     sampleArticle: "예시 글",

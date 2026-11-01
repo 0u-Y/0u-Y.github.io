@@ -21,9 +21,7 @@ type Props = {
 };
 const {
   lang = getLanguage(Astro.url.pathname),
-  title = lang === "ko"
-    ? `${config.site.author} — 연구와 오픈소스`
-    : config.site.title,
+  title = config.site.title,
   description = lang === "ko" ? ui.ko.siteDescription : config.site.description,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
   translations = {

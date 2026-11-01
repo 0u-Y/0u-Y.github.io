@@ -45,6 +45,19 @@ for (const file of files) {
     `${file}: menu names must remain English`
   );
   assert(html.includes('id="main"'), `${file}: skip-link target missing`);
+  const section = path.match(/\/(research|open-source|about)\/$/)?.[1];
+  if (section) {
+    const title = {
+      research: "Research",
+      "open-source": "Open Source",
+      about: "About",
+    }[section];
+    assert.match(
+      html,
+      new RegExp(`<h1\\b[^>]*>\\s*${title}\\s*</h1>`),
+      `${file}: page heading must remain English`
+    );
+  }
   if (file !== "404.html") {
     assert(
       html.includes(`rel="canonical" href="${site}${path}"`),

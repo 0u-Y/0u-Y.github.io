@@ -16,9 +16,7 @@ const posts = getSortedPosts(await getCollection("posts")).filter(
 );
 ---
 
-<Layout
-  title={`${title} — ${lang === "ko" ? "연구와 오픈소스" : "Research & Open Source"}`}
-  {description}
+<Layout title={`${title} — Research & Open Source`} {description}
   ><main id="main">
     <header class="page-heading">
       <h1>{title}</h1><p>{description}</p>

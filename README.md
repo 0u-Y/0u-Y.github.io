@@ -33,7 +33,7 @@ About 본문과 기여 프로젝트 링크는 `src/components/pages/AboutPage.as
 
 ## EN / KO 버전
 
-영문은 기존 주소를 사용하고, 한국어는 `/ko/` 아래에서 제공합니다. 오른쪽 위의 EN / KO로 같은 페이지의 다른 언어 버전으로 이동합니다. 상단 메뉴 이름은 두 언어 모두 Home / Research / Open Source / About으로 유지합니다. 언어 선택은 URL로 유지하며 자동으로 언어를 바꾸지 않습니다.
+영문은 기존 주소를 사용하고, 한국어는 `/ko/` 아래에서 제공합니다. 오른쪽 위의 EN / KO로 같은 페이지의 다른 언어 버전으로 이동합니다. 상단 메뉴 이름은 두 언어 모두 Home / Research / Open Source / About으로 유지하며, Research / Open Source / About 페이지 제목도 번역하지 않습니다. 언어 선택은 URL로 유지하며 자동으로 언어를 바꾸지 않습니다.
 
 글은 다음처럼 같은 파일명으로 연결합니다. 원문과 번역은 한 번에 commit·push하면 됩니다.
 

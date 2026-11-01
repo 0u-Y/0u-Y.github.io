@@ -6,7 +6,7 @@ export const profile = {
   introduction:
     "I contribute to Ethereum clients and study blockchain systems. Here, I share notes on core development, research papers, and experiments",
   introductionKo:
-    "Ethereum 클라이언트에 기여하고 블록체인 시스템을 공부합니다. 코어 개발, 연구 논문, 실험에서 배운 내용을 이곳에 기록합니다.",
+    "Ethereum 클라이언트 개발에 참여하고 블록체인 시스템을 공부합니다. 개발하며 배운 점과 읽은 논문, 직접 해본 실험을 기록합니다.",
   github: "https://github.com/0u-Y",
   email: "yyw1000@naver.com",
 };
