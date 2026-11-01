@@ -4,7 +4,7 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export const profile = {
   name: "YoungWoo Yang",
   introduction:
-    "I study Ethereum clients and distributed systems, and contribute to open source. This is where I keep questions, experiments, and work in progress.",
+    "I contribute to Ethereum clients and study blockchain systems. Here, I share notes on core development, research papers, and experiments",
   github: "https://github.com/0u-Y",
   email: "",
   interests: [
